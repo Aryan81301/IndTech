@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IndTech</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(270deg, #1e3c72, #2a5298, #ff6a00, #ee0979);
+      background-size: 800% 800%;
+      animation: gradientShift 20s ease infinite;
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Header */
+    header {
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 15px 40px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      flex-wrap: wrap;
+    }
+    .logo { display: flex; align-items: center; }
+    header img {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      margin-right: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+    .logo h1 { font-size: 1.8rem; color: black; }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+    nav ul li a {
+      text-decoration: none;
+      font-weight: bold;
+      color: black;
+      transition: 0.3s;
+    }
+    nav ul li a:hover { color: #007bff; }
+
+    /* Moving Text */
+    .moving-text {
+      width: 100%;
+      background: black;
+      color: #ffdd57;
+      font-size: 1.2rem;
+      font-weight: bold;
+      padding: 10px 0;
+      white-space: nowrap;
+      overflow: hidden;
+      position: relative;
+    }
+    .moving-text span {
+      display: inline-block;
+      padding-left: 100%;
+      animation: move 12s linear infinite;
+    }
+    @keyframes move {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+
+    /* Project Section */
+    .project {
+      text-align: center;
+      padding: 25px 15px;
+      width: 95%;
+      max-width: 1200px;
+    }
+    .project h1 {
+      font-size: 3rem;
+      color: #ffdd57;
+      margin-bottom: 25px;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+    }
+    .project-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+    .image-box { flex: 1; text-align: center; }
+    .image-box img {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+      transition: transform 0.3s;
+    }
+    .image-box img:hover { transform: scale(1.05); }
+    .links {
+      flex: 1;
+      min-width: 250px;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.6);
+      border: 2px solid #00c6ff;
+    }
+    .links h3 {
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+      color: #ffdd57;
+      text-align: center;
+    }
+    .link-box { margin-bottom: 15px; }
+    .link-box p { font-weight: bold; }
+    .link-box a {
+      display: inline-block;
+      margin-top: 5px;
+      padding: 10px 18px;
+      background: black;
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      transition: 0.3s;
+      font-size: 0.95rem;
+    }
+    .link-box a:hover { background: #00c6ff; color: black; }
+
+    /* Gallery Section */
+    .gallery {
+      width: 90%;
+      max-width: 1000px;
+      margin: 50px auto;
+      position: relative;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+    }
+    .slides {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      width: 100%;
+    }
+    .slide {
+      min-width: 100%;
+      position: relative;
+      text-align: center;
+      cursor: pointer;
+    }
+    .slide img {
+      width: 100%;
+      border-radius: 15px;
+    }
+    .caption {
+      position: absolute;
+      bottom: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.6);
+      color: #fff;
+      padding: 8px 15px;
+      border-radius: 10px;
+      font-size: 1rem;
+    }
+    .gallery button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.5);
+      color: white;
+      border: none;
+      padding: 12px;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+    .prev { left: 10px; }
+    .next { right: 10px; }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .project h1, .text h1 { font-size: 2.2rem; }
+      nav ul { justify-content: center; gap: 15px; }
+      .links { width: 100%; }
+      .caption { font-size: 0.9rem; }
+    }
+    @media (max-width: 480px) {
+      header { padding: 10px 20px; }
+      header img { width: 45px; height: 45px; }
+      .logo h1 { font-size: 1.3rem; }
+      nav ul { gap: 10px; font-size: 0.9rem; }
+      .project h1, .text h1 { font-size: 1.8rem; }
+      .link-box a { font-size: 0.85rem; padding: 8px 12px; }
+      .gallery button { padding: 8px; }
+      .caption { font-size: 0.8rem; padding: 6px 10px; }
+    }
+    .text h1 {
+      font-size: 3rem;
+      color: #ffdd57;
+      margin-bottom: 25px;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src="logo.jpeg" alt="IndTech Logo">
+      <h1>IndTech</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="#gallery">Projects</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Moving Text -->
+  <div class="moving-text">
+    <span>🚀 Welcome to IndTech | Innovation | Technology | Future Ready Solutions 🚀</span>
+  </div>
+
+  <!-- Project Section -->
+  <section class="project">
+    <h1><u>OUR PROJECT</u></h1>
+    <div class="project-container">
+      <div class="image-box">
+        <img src="c1.jpg" alt="Chicken Game 1">
+      </div>
+      <div class="links">
+        <h3>Here are the Links</h3>
+        <div class="link-box">
+          <p>App link</p>
+          <a href="https://tinyurl.com/4fdu25w2" target="_blank">Click here</a>
+        </div>
+        <div class="link-box">
+          <p>Chicken Road New Version</p>
+          <a href="https://tinyurl.com/jh6a4ps7" target="_blank">Click here</a>
+        </div>
+        <div class="link-box">
+          <p>Chicken Road Old Version</p>
+          <a href="https://tinyurl.com/msdkbc3p" target="_blank">Click here</a>
+        </div>
+        <div class="link-box">
+          <p>Extra Link</p>
+          <a href="https://tinyurl.com/mvcs9sbd" target="_blank">Click here</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="text">
+    <h1><center><u>OUR OTHER PROJECTS</u></center></h1>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery" class="gallery">
+    <div class="slides">
+      <div class="slide" onclick="window.open('https://tinyurl.com/4fdu25w2', '_blank')">
+        <img src="p1.jpg" alt="Project 1">
+        <div class="caption">Project 1</div>
+      </div>
+      <div class="slide" onclick="window.open('https://tinyurl.com/jh6a4ps7', '_blank')">
+        <img src="p2.jpg" alt="Project 2">
+        <div class="caption">Project 2</div>
+      </div>
+      <div class="slide" onclick="window.open('https://tinyurl.com/msdkbc3p', '_blank')">
+        <img src="p3.jpg" alt="Project 3">
+        <div class="caption">Project 3</div>
+      </div>
+      <div class="slide" onclick="window.open('https://tinyurl.com/mvcs9sbd', '_blank')">
+        <img src="p4.jpg" alt="Project 4">
+        <div class="caption">Project 4</div>
+      </div>
+    </div>
+    <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+    <button class="next" onclick="moveSlide(1)">&#10095;</button>
+  </section>
+
+  <script>
+    let index = 0;
+    const slides = document.querySelector(".slides");
+    const totalSlides = document.querySelectorAll(".slide").length;
+
+    function showSlide(i) {
+      index += i;
+      if (index < 0) index = totalSlides - 1;
+      if (index >= totalSlides) index = 0;
+      slides.style.transform = `translateX(${-index * 100}%)`;
+    }
+
+    function moveSlide(i) {
+      showSlide(i);
+    }
+
+    // Auto slide every 3 seconds
+    setInterval(() => { moveSlide(1); }, 3000);
+  </script>
+
+</body>
+</html>
